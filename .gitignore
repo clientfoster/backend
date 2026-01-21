@@ -7,11 +7,14 @@ package-lock.json
 yarn.lock
 
 # Environment Variables
+# Allow .env.development (contains localhost URLs only)
+# Keep .env ignored (contains production secrets)
 .env
 .env.local
-.env.development
+.env.development.local
 .env.test
 .env.production
+.env.production.local
 .env.*.local
 
 # Logs

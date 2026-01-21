@@ -10,9 +10,9 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-    process.env.FRONTEND_URL, 
+    process.env.FRONTEND_URL,
     'https://qote.semixon.com',
-    'http://localhost:5173', 
+    'http://localhost:5173',
     'http://localhost:8080'
 ];
 
@@ -46,4 +46,12 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server running on port ${PORT}`));
+// Export the Express app for Vercel serverless
+module.exports = app;
+
+// Only start the server if not in Vercel serverless environment
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
