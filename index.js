@@ -9,7 +9,12 @@ connectDB();
 
 const app = express();
 
-const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173', 'http://localhost:8080'];
+const allowedOrigins = [
+    process.env.FRONTEND_URL, 
+    'https://qote.semixon.com',
+    'http://localhost:5173', 
+    'http://localhost:8080'
+];
 
 app.use(cors({
     origin: function (origin, callback) {
